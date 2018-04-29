@@ -1,7 +1,7 @@
 # BeyondPhysicsApplication
 
 框架demo下载地址:
-http://47.97.113.47:4126/perfectwallpaper_files/apks/beyondPhysics.apk
+http://47.97.113.47:4126/apks/beyondPhysics.apk
 
 
 androidStudio Gradle导入:
