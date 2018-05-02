@@ -14,7 +14,7 @@ import com.beyondphysics.ui.BaseActivity;
 import com.beyondphysics.ui.recyclerviewlibrary.adapters.LoadMoreRecyclerViewAdapter;
 import com.beyondphysics.ui.recyclerviewlibrary.models.ViewItem;
 import com.beyondphysics.ui.recyclerviewlibrary.views.BaseRecyclerViewFromFrameLayout;
-import com.my.adapters.recyclerviewadapter.MainActivity_Fragment_Home_Default_RecyclerViewAdapter;
+import com.my.adapters.recyclerviewadapter.WaterfallFlowActivity_RecyclerViewAdapter;
 import com.my.modelhttpfunctions.WaterfallFlowHttpFunction;
 import com.my.models.Wallpaper;
 import com.my.models.net.BaseGsonModel;
@@ -40,7 +40,7 @@ public class WaterfallFlowActivity extends NewBaseActivity {
     private ImageView imageViewBack;
     private TextView textViewToolbarMode;
     private BaseRecyclerViewFromFrameLayout baseRecyclerViewFromFrameLayout;
-    private MainActivity_Fragment_Home_Default_RecyclerViewAdapter mainActivity_Fragment_Home_Default_RecyclerViewAdapter;
+    private WaterfallFlowActivity_RecyclerViewAdapter waterfallFlowActivity_RecyclerViewAdapter;
 
     private String kind = Wallpaper.kind_image;
 
@@ -214,7 +214,7 @@ public class WaterfallFlowActivity extends NewBaseActivity {
                         viewItems.add(new ViewItem(ViewItem.VIEW_TYPE_NORMAL_ITEM_TYPE1, wallpapers.get(i)));
                     }
                 }
-                TheApplication.addAllFormBaseRecyclerViewAdapter(mainActivity_Fragment_Home_Default_RecyclerViewAdapter, viewItems);
+                TheApplication.addAllFormBaseRecyclerViewAdapter(waterfallFlowActivity_RecyclerViewAdapter, viewItems);
             }
         });
 
@@ -300,7 +300,7 @@ public class WaterfallFlowActivity extends NewBaseActivity {
                         viewItems.add(new ViewItem(ViewItem.VIEW_TYPE_NORMAL_ITEM_TYPE1, wallpapers.get(i)));
                     }
                 }
-                TheApplication.addAllFormBaseRecyclerViewAdapter(mainActivity_Fragment_Home_Default_RecyclerViewAdapter, viewItems);
+                TheApplication.addAllFormBaseRecyclerViewAdapter(waterfallFlowActivity_RecyclerViewAdapter, viewItems);
             }
         });
 
@@ -320,16 +320,16 @@ public class WaterfallFlowActivity extends NewBaseActivity {
     }
 
     private void loadMoreError() {
-        TheApplication.loadMoreErrorFormBaseRecyclerViewAdapter(mainActivity_Fragment_Home_Default_RecyclerViewAdapter);
+        TheApplication.loadMoreErrorFormBaseRecyclerViewAdapter(waterfallFlowActivity_RecyclerViewAdapter);
     }
 
     private void initOrRefreshAdapter(List<ViewItem> viewItems) {
         if (viewItems == null) {
             viewItems = new ArrayList<ViewItem>();
         }
-        if (mainActivity_Fragment_Home_Default_RecyclerViewAdapter == null) {
-            mainActivity_Fragment_Home_Default_RecyclerViewAdapter = new MainActivity_Fragment_Home_Default_RecyclerViewAdapter(WaterfallFlowActivity.this, baseRecyclerViewFromFrameLayout.getRecyclerView(), getSpanCount(), viewItems, R.layout.normal_more_progress, HttpConnectTool.pageSize);
-            mainActivity_Fragment_Home_Default_RecyclerViewAdapter.setLoadMoreCallback(new LoadMoreRecyclerViewAdapter.LoadMoreCallback() {
+        if (waterfallFlowActivity_RecyclerViewAdapter == null) {
+            waterfallFlowActivity_RecyclerViewAdapter = new WaterfallFlowActivity_RecyclerViewAdapter(WaterfallFlowActivity.this, baseRecyclerViewFromFrameLayout.getRecyclerView(), getSpanCount(), viewItems, R.layout.normal_more_progress, HttpConnectTool.pageSize);
+            waterfallFlowActivity_RecyclerViewAdapter.setLoadMoreCallback(new LoadMoreRecyclerViewAdapter.LoadMoreCallback() {
                 @Override
                 public void loadMore(ViewItem viewItem) {
                     if (viewItem == null || viewItem.getModel() == null) {
@@ -349,9 +349,9 @@ public class WaterfallFlowActivity extends NewBaseActivity {
                     }
                 }
             });
-            baseRecyclerViewFromFrameLayout.setAdapter(mainActivity_Fragment_Home_Default_RecyclerViewAdapter);
+            baseRecyclerViewFromFrameLayout.setAdapter(waterfallFlowActivity_RecyclerViewAdapter);
         } else {
-            TheApplication.replaceAllFormBaseRecyclerViewAdapter(mainActivity_Fragment_Home_Default_RecyclerViewAdapter, viewItems, baseRecyclerViewFromFrameLayout.getRecyclerView());
+            TheApplication.replaceAllFormBaseRecyclerViewAdapter(waterfallFlowActivity_RecyclerViewAdapter, viewItems, baseRecyclerViewFromFrameLayout.getRecyclerView());
         }
 
     }

@@ -21,7 +21,7 @@ import com.my.utils.RecyclerViewItemDecorationDefault;
 import java.util.List;
 
 
-public class MainActivity_Fragment_Home_Default_RecyclerViewAdapter extends LoadMoreRecyclerViewAdapter {
+public class WaterfallFlowActivity_RecyclerViewAdapter extends LoadMoreRecyclerViewAdapter {
     private BaseActivity baseActivity;
     private RecyclerView recyclerView;
     private int spanCount = 2;
@@ -29,17 +29,17 @@ public class MainActivity_Fragment_Home_Default_RecyclerViewAdapter extends Load
     private int itemWidth = 0;
     private int avatar_normal_width_narrow;
 
-    public MainActivity_Fragment_Home_Default_RecyclerViewAdapter(BaseActivity baseActivity, RecyclerView recyclerView, int spanCount, List<ViewItem> datas) {
+    public WaterfallFlowActivity_RecyclerViewAdapter(BaseActivity baseActivity, RecyclerView recyclerView, int spanCount, List<ViewItem> datas) {
         super(datas);
         init(baseActivity, recyclerView, spanCount);
     }
 
-    public MainActivity_Fragment_Home_Default_RecyclerViewAdapter(BaseActivity baseActivity, RecyclerView recyclerView, int spanCount, List<ViewItem> datas, int loadMoreLayoutId) {
+    public WaterfallFlowActivity_RecyclerViewAdapter(BaseActivity baseActivity, RecyclerView recyclerView, int spanCount, List<ViewItem> datas, int loadMoreLayoutId) {
         super(datas, loadMoreLayoutId);
         init(baseActivity, recyclerView, spanCount);
     }
 
-    public MainActivity_Fragment_Home_Default_RecyclerViewAdapter(BaseActivity baseActivity, RecyclerView recyclerView, int spanCount, List<ViewItem> datas, int loadMoreLayoutId, int pageCount) {
+    public WaterfallFlowActivity_RecyclerViewAdapter(BaseActivity baseActivity, RecyclerView recyclerView, int spanCount, List<ViewItem> datas, int loadMoreLayoutId, int pageCount) {
         super(datas, loadMoreLayoutId, pageCount);
         init(baseActivity, recyclerView, spanCount);
     }

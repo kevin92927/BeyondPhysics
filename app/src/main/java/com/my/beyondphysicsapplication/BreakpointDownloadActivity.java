@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -21,6 +22,8 @@ import com.beyondphysics.ui.utils.NetworkStateTool;
 import java.io.File;
 
 public class BreakpointDownloadActivity extends NewBaseActivity {
+
+    private ImageView imageViewBack;
     private EditText editTextUrl;
     private ProgressBar progressBar;
     private TextView textViewProgress;
@@ -46,6 +49,7 @@ public class BreakpointDownloadActivity extends NewBaseActivity {
 
     @Override
     protected void initUi() {
+        imageViewBack = (ImageView) findViewById(R.id.imageViewBack);
         editTextUrl = (EditText) findViewById(R.id.editTextUrl);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         textViewProgress = (TextView) findViewById(R.id.textViewProgress);
@@ -81,6 +85,9 @@ public class BreakpointDownloadActivity extends NewBaseActivity {
             @Override
             public void onClick(View view) {
                 switch (view.getId()) {
+                    case R.id.imageViewBack:
+                        doBack();
+                        break;
                     case R.id.buttonDownload:
                         if (!downloading) {
                             goToDownload();
@@ -96,6 +103,7 @@ public class BreakpointDownloadActivity extends NewBaseActivity {
                 }
             }
         };
+        imageViewBack.setOnClickListener(onClickListener);
         buttonDownload.setOnClickListener(onClickListener);
         buttonCancel.setOnClickListener(onClickListener);
     }
