@@ -26,8 +26,11 @@ dependencies {
 	
 }
 
+框架静态图:
 
+![image](https://github.com/xihuan22d/BeyondPhysics/blob/master/screenshot/beyondPhysics.png)
 
+demo程序预览图:
 
 ![image](https://github.com/xihuan22d/BeyondPhysics/blob/master/screenshot/1.png)
 
