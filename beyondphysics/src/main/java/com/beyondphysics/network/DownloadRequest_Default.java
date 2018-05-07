@@ -8,23 +8,23 @@ import com.beyondphysics.network.utils.SuperKey;
  */
 
 public class DownloadRequest_Default extends DownloadRequest<String> {
-    public DownloadRequest_Default(String urlString, String savePath, String tag, OnResponseListener<String> onResponseListener) {
+    public DownloadRequest_Default(String urlString, String savePath, String tag, Request.OnResponseListener<String> onResponseListener) {
         super(urlString, savePath, tag, onResponseListener);
     }
 
-    public DownloadRequest_Default(String urlString, String savePath, String tag, OnResponseListener<String> onResponseListener, int priority) {
+    public DownloadRequest_Default(String urlString, String savePath, String tag, Request.OnResponseListener<String> onResponseListener, int priority) {
         super(urlString, savePath, tag, onResponseListener, priority);
     }
 
-    public DownloadRequest_Default(String urlString, String savePath, String tag, OnResponseListener<String> onResponseListener, int priority, String encoding) {
+    public DownloadRequest_Default(String urlString, String savePath, String tag, Request.OnResponseListener<String> onResponseListener, int priority, String encoding) {
         super(urlString, savePath, tag, onResponseListener, priority, encoding);
     }
 
-    public DownloadRequest_Default(String urlString, String savePath, String tag, OnResponseListener<String> onResponseListener, int priority, String encoding, int connectTimeoutMs, int readTimeoutMs, OnDownloadProgressListener onDownloadProgressListener) {
+    public DownloadRequest_Default(String urlString, String savePath, String tag, Request.OnResponseListener<String> onResponseListener, int priority, String encoding, int connectTimeoutMs, int readTimeoutMs, OnDownloadProgressListener onDownloadProgressListener) {
         super(urlString, savePath, tag, onResponseListener, priority, encoding, connectTimeoutMs, readTimeoutMs, onDownloadProgressListener);
     }
 
-    public DownloadRequest_Default(String urlString, String savePath, SuperKey superKey, OnResponseListener<String> onResponseListener, String encoding, int connectTimeoutMs, int readTimeoutMs, OnDownloadProgressListener onDownloadProgressListener) {
+    public DownloadRequest_Default(String urlString, String savePath, SuperKey superKey, Request.OnResponseListener<String> onResponseListener, String encoding, int connectTimeoutMs, int readTimeoutMs, OnDownloadProgressListener onDownloadProgressListener) {
         super(urlString, savePath, superKey, onResponseListener, encoding, connectTimeoutMs, readTimeoutMs, onDownloadProgressListener);
     }
 

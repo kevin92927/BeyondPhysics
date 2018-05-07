@@ -8,7 +8,7 @@ import com.beyondphysics.network.Request;
 
 public interface HttpAgreement {
     /**
-     * 继承该接口的网络请求方法不允许返回null,可参考HttpAgreement_Defalt写法,只有当请求是图片请求时才使用bitmapRequestParams参数
+     * 继承该接口的网络请求方法不允许返回null,可参考HttpAgreement_Defalt写法
      */
-    HttpResponse doRequest(Request<?> request, DoRequestParams bitmapRequestParams);
+    HttpResponse doRequest(Request<?> request, DoRequestParams doRequestParams);
 }

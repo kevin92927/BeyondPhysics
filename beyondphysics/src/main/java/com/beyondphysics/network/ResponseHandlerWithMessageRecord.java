@@ -120,7 +120,7 @@ public class ResponseHandlerWithMessageRecord extends ResponseHandler {
 
     /**
      * 该方法需要在 synchronized (linkedHashMapMessages)锁内操作
-     * 如果使用的bundle传递的数据,bundle内数据会被清空,使用obj没关系,不建议使用bundle传递消息,bundle有容量限制,而且序列化速度慢
+     * 不建议使用bundle传递消息,bundle有容量限制,而且序列化速度慢
      */
     private void removeMessageObjects(List<MessageObject> messageObjects, boolean removeListener) {
         if (messageObjects == null) {

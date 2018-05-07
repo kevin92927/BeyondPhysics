@@ -347,7 +347,7 @@ public class HttpAgreement_Default implements HttpAgreement {
                     }
                 }
                 if (cancelRequest) {
-                    FileTool.deleteFile(cachePath);//包含在FileNameLock锁内了
+                    FileTool.deleteFile(cachePath);
                     httpResponse.setStatus(HttpResponse.CANCEL);
                     httpResponse.setResult(HttpResponse.CANCEL_TIPS);
                 } else {
@@ -462,7 +462,7 @@ public class HttpAgreement_Default implements HttpAgreement {
                     }
                 }
                 if (cancelRequest) {
-                    FileTool.deleteFile(savePath);//包含在FileNameLock锁内了
+                    FileTool.deleteFile(savePath);
                     httpResponse.setStatus(HttpResponse.CANCEL);
                     httpResponse.setResult(HttpResponse.CANCEL_TIPS);
                 } else {

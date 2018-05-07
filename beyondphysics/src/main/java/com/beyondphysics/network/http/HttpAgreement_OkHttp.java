@@ -36,7 +36,7 @@ import okhttp3.internal.huc.OkHttpURLConnection;
 import okhttp3.internal.huc.OkHttpsURLConnection;
 
 /**
- * android4.4以后HttpURLConnection默认用的就是okHttp,如果不想在build.gradle导入com.squareup.okhttp3:okhttp-urlconnection,删除该代码文件即可
+ * android4.4以后HttpURLConnection默认用的就是okHttp,如果不想在build.gradle导入com.squareup.okhttp3:okhttp-urlconnection,删除即可
  * Created by xihuan22 on 2017/8/1.
  */
 
@@ -361,7 +361,7 @@ public class HttpAgreement_OkHttp implements HttpAgreement {
                     }
                 }
                 if (cancelRequest) {
-                    FileTool.deleteFile(cachePath);//包含在FileNameLock锁内了
+                    FileTool.deleteFile(cachePath);
                     httpResponse.setStatus(HttpResponse.CANCEL);
                     httpResponse.setResult(HttpResponse.CANCEL_TIPS);
                 } else {
@@ -476,7 +476,7 @@ public class HttpAgreement_OkHttp implements HttpAgreement {
                     }
                 }
                 if (cancelRequest) {
-                    FileTool.deleteFile(savePath);//包含在FileNameLock锁内了
+                    FileTool.deleteFile(savePath);
                     httpResponse.setStatus(HttpResponse.CANCEL);
                     httpResponse.setResult(HttpResponse.CANCEL_TIPS);
                 } else {
@@ -649,7 +649,7 @@ public class HttpAgreement_OkHttp implements HttpAgreement {
                         }
                     }
                     if (cancelRequest) {
-                        httpResponse.setStatus(HttpResponse.CANCEL_AFTER_OK);//断点下载比较特殊,取消了也要返回上次的文件
+                        httpResponse.setStatus(HttpResponse.CANCEL_AFTER_OK);
                         httpResponse.setContentType(contentType);
                         httpResponse.setContentEncoding(contentEncoding);
                         if (contentLengthAll != 0) {
@@ -740,7 +740,7 @@ public class HttpAgreement_OkHttp implements HttpAgreement {
             FileInputStream fileInputStream = null;
             InputStream inputStream = null;
             try {
-                httpURLConnection.setChunkedStreamingMode(0);//防止把数据缓存到内存导致大文件上传时内存溢出
+                httpURLConnection.setChunkedStreamingMode(0);
                 dataOutputStream = new DataOutputStream(httpURLConnection.getOutputStream());
                 if (names != null && values != null) {
                     for (int i = 0; i < names.length; i++) {
@@ -832,7 +832,7 @@ public class HttpAgreement_OkHttp implements HttpAgreement {
                 e.printStackTrace();
             } finally {
                 try {
-                    if (fileInputStream != null) {//谁先结束先关谁
+                    if (fileInputStream != null) {
                         fileInputStream.close();
                     }
                     if (dataOutputStream != null) {

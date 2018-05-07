@@ -58,7 +58,7 @@ public class ThreadSafelyLinkedHasMapBitmapRequest_Network extends ThreadSafelyL
 
 
     /**
-     * 移除正在运行的请求,并且立即触发相同请求,主要用在BaseBitmapNetworkThread
+     * 移除正在运行的请求,并且立即刷新相同key的请求,主要用在BaseBitmapNetworkThread
      * 移除并返回相同url的所有图片请求
      * return NotNull
      */
@@ -98,7 +98,6 @@ public class ThreadSafelyLinkedHasMapBitmapRequest_Network extends ThreadSafelyL
                     mainResponseHandler.sendResponseMessage(bitmapRequests.get(i), httpResponse);
                     removeRequest(superKeys.get(i));
                 }
-                //获取相同url的请求
                 if (url != null) {
                     for (int i = 0; i < sameUrlSuperKeys.size(); i++) {
                         BitmapRequest<?> bitmapRequest = sameUrlBitmapRequests.get(i);

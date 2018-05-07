@@ -140,7 +140,7 @@ public class ActivityManager {
     }
 
     /**
-     * 杀死除了指定activity以外的所有activity
+     * 关闭除指定activity以外的所有activity
      **/
     public void killAllActivityWithOutMe(String activityKey) {
         if (activityKey == null) {
@@ -165,7 +165,7 @@ public class ActivityManager {
     }
 
     /**
-     * 杀死除了指定activity们以外的所有activity
+     * 关闭除指定activity们以外的所有activity
      **/
     public void killAllActivityWithOutWe(String[] activityKeys) {
         if (activityKeys == null) {

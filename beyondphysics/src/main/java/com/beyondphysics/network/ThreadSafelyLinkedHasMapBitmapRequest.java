@@ -122,8 +122,8 @@ public class ThreadSafelyLinkedHasMapBitmapRequest extends ThreadSafelyLinkedHas
 
 
     /**
-     * 移除正在运行的请求,并且立即触发相同请求,主要用在BaseBitmapNetworkThread
-     * 这俩步操作需要在一个this锁内进行,这样可以保证数据安全
+     * 移除正在运行的请求,并且立即刷新相同key的请求,主要用在BaseDiskCacheThread
+     * return NotNull
      */
     public void removeRunningRequestAndRefreshSameKey(SuperKey superKey, HttpResponse httpResponse) {
         if (superKey == null) {
@@ -157,11 +157,7 @@ public class ThreadSafelyLinkedHasMapBitmapRequest extends ThreadSafelyLinkedHas
     }
 
 
-    /**
-     * 对于图片请求不建议调用该阻塞方式终止图片下载,否则可能导致滑动过程稍有卡顿
-     * 但建议在activity销毁时候调用阻塞方式cancelRequestsWithTagByWait方法在界面销毁前完全释放内存
-     * 这里有个复杂的情况,可能在获取this锁或者阻塞等待关闭的过程中post了请求
-     */
+
     public void cancelRequestWithSuperKeyByWait(SuperKey superKey, boolean removeListener) {
         if (superKey == null) {
             return;

@@ -123,7 +123,7 @@ public class BaseActivity extends AppCompatActivity {
                 popupWindow.dismiss();
             }
         }
-        hashMapPopupWindows.clear();//其实我们在onDismiss里面已经写了每一项的移除了,但是多加更加保险,比如团队写的时候常常有人就会漏写
+        hashMapPopupWindows.clear();
     }
 
     @Override
@@ -295,9 +295,9 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     /**
-     * 因为api21之后的cardView才是完美的,之前的会有边界多出和因圆角导致的留白问题,边界多出可以通过该方法解决
+     * 因为api21之后的cardView才是正常的,之前的会有边界多出和因圆角导致的留白问题,边界多出可以通过该方法解决
      */
-    public static int getRecyclerViewSpace(Activity activity) {
+    public static int getRecyclerViewSpace_Default(Activity activity) {
         int space = 0;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             space = activity.getResources().getDimensionPixelSize(R.dimen.beyondPhysics_recyclerView_space_default);

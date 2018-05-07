@@ -38,7 +38,7 @@ public class ChooseImageActivity_RecyclerViewAdapter extends UnLoadMoreRecyclerV
 
     private void init(ChooseImageActivity chooseImageActivity) {
         this.chooseImageActivity = chooseImageActivity;
-        int activity_chooseimage_recyclerView_space = BaseActivity.getRecyclerViewSpace(this.chooseImageActivity);
+        int activity_chooseimage_recyclerView_space = BaseActivity.getRecyclerViewSpace_Default(this.chooseImageActivity);
         itemWidth = (BaseActivity.getScreenWidth(this.chooseImageActivity) - 6 * activity_chooseimage_recyclerView_space) / 3;
         beyondPhysics_activity_chooseimage_item_background_select = ContextCompat.getColor(this.chooseImageActivity, R.color.beyondPhysics_activity_chooseimage_item_background_select);
         beyondPhysics_activity_chooseimage_item_background_unselect = ContextCompat.getColor(this.chooseImageActivity, R.color.beyondPhysics_activity_chooseimage_item_background_unselect);

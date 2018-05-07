@@ -23,7 +23,7 @@ public class BaseCacheItemIOThread extends BaseThread {
      */
     private boolean triggerSave = false;
     /**
-     * 没有存储次数的累计,到达一定值后如果没有触发存储,
+     * 没有存储次数的累计
      */
     private int unSaveCount = 0;
 

@@ -226,7 +226,7 @@ public class BaseRecyclerViewFromFrameLayout extends FrameLayout {
             }
 
             //可以简化下拉刷新控件的控制,而且能保证数据更新完毕后才设置下拉完成
-            private void update() {//可能一个操作如replaceAll会触发多次update,但是这并不要紧的
+            private void update() {
                 swipeRefreshLayout.setRefreshing(false);
                 if (emptyId != 0) {
                     if (recyclerView.getAdapter().getItemCount() == 0) {//adapter一定不为null,是null就return了不初始化

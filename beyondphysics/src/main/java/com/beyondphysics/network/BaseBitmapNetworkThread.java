@@ -69,7 +69,7 @@ public class BaseBitmapNetworkThread extends BaseThread {
         if (bitmapRequest != null) {
             boolean isHaveCacheItem = false;
             if (!bitmapRequest.isLostCache()) {
-                CacheItem cacheItem = threadSafelyLinkedHasMapCacheItem.getCacheItemByKey(bitmapRequest.getUrlString(), RequestManager.BITMAPREQUEST_TAG);//因为threadSafelyLinkedHasMapCacheItem往往比较庞大,如果直接在主线程操作会导致卡顿
+                CacheItem cacheItem = threadSafelyLinkedHasMapCacheItem.getCacheItemByKey(bitmapRequest.getUrlString(), RequestManager.BITMAPREQUEST_TAG);
                 if (cacheItem != null) {
                     String fileName = cacheItem.getCachePath();
                     if (fileName != null) {

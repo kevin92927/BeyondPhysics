@@ -14,9 +14,6 @@ public class UrlTool {
 
     /**
      * 获得url的类型,如果返回-1,表示未知类型,1表示是http请求,2表示是https请求,3表示文件请求
-     *
-     * @param url
-     * @return
      */
     public static int getUrlType(String url) {
         int type = -1;

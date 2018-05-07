@@ -85,11 +85,7 @@ public class ThreadSafelyLinkedHasMapRequest extends ThreadSafelyLinkedHasMap<Re
     }
 
 
-    /**
-     * 如果this锁包含了请求的request的while操作,那么在设置请求为Request.FINISH的地方,在获得弹出的栈顶请求后,在执行Request.FINISH之前不可以调用ThreadSafelyLinkedHasMapRequest内的方法
-     * 比如在request.setRunningStatus(Request.FINISH)之前调用networkThreadSafelyLinkedHasMapRequest.removeRunningRequest(request.getSuperKey())将会导致while循环和this锁之间的死锁
-     * 为了避免这个问题,request的while循环的阻塞操作不能包含在this锁内,外部的线程需要在执行request.setRunningStatus(Request.FINISH)之前removeRunningRequest
-     */
+
     public void cancelRequestWithSuperKeyByWait(SuperKey superKey, boolean removeListener) {
         if (superKey == null) {
             return;
@@ -103,7 +99,7 @@ public class ThreadSafelyLinkedHasMapRequest extends ThreadSafelyLinkedHasMap<Re
                 HttpResponse httpResponse = new HttpResponse();
                 httpResponse.setStatus(HttpResponse.CANCEL);
                 httpResponse.setResult(HttpResponse.CANCEL_TIPS);
-                mainResponseHandler.sendResponseMessage(request, httpResponse);//立即移除并执行回调
+                mainResponseHandler.sendResponseMessage(request, httpResponse);
                 removeRequest(superKey);
             }
             if (runningLinkedHashMapRequests.containsKey(superKey)) {
@@ -121,7 +117,7 @@ public class ThreadSafelyLinkedHasMapRequest extends ThreadSafelyLinkedHasMap<Re
                     e.printStackTrace();
                 }
                 count = count + 10;
-                if (count >= 5000) {//5秒没关闭说明关闭超时,写入日志
+                if (count >= 5000) {
                     FileTool.needShowAndWriteLogToSdcard(RequestManager.openDebug, RequestManager.logFileName, "ThreadSafelyLinkedHasMapRequest_cancelRequestWithSuperKeyByWait:关闭请求超时", null, 1);
                     count = 0;
                 }
@@ -168,7 +164,7 @@ public class ThreadSafelyLinkedHasMapRequest extends ThreadSafelyLinkedHasMap<Re
                 httpResponse.setStatus(HttpResponse.CANCEL);
                 httpResponse.setResult(HttpResponse.CANCEL_TIPS);
                 mainResponseHandler.sendResponseMessage(request, httpResponse);
-                removeRequest(request.getSuperKey());//findRequestsWithTag已经判断过了,一定包含SuperKey
+                removeRequest(request.getSuperKey());
             }
             needWaitRunningRequests = findRequestWithTag(2, tag);
             for (int i = 0; i < needWaitRunningRequests.size(); i++) {

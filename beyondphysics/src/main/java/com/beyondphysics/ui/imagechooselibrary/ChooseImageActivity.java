@@ -199,7 +199,6 @@ public class ChooseImageActivity extends BaseActivity {
 
     private void removeSamePaths() {
         if (selectImagePaths != null) {
-            // HashSet<String> hashSet = new HashSet<String>(selectImagePaths);//会破坏顺序
             LinkedHashSet<String> linkedHashSet = new LinkedHashSet<String>(selectImagePaths);
             selectImagePaths = new ArrayList<String>(linkedHashSet);
         }
@@ -207,7 +206,7 @@ public class ChooseImageActivity extends BaseActivity {
 
     private void initBaseRecyclerViewFromFrameLayout() {
         baseRecyclerViewFromFrameLayout.getRecyclerView().setItemAnimator(new DefaultItemAnimator());
-        int recyclerView_space = BaseActivity.getRecyclerViewSpace(ChooseImageActivity.this);
+        int recyclerView_space = BaseActivity.getRecyclerViewSpace_Default(ChooseImageActivity.this);
         baseRecyclerViewFromFrameLayout.getRecyclerView().addItemDecoration(new SpaceItemDecoration(recyclerView_space));
         SwipeRefreshLayout.OnRefreshListener onRefreshListener = new SwipeRefreshLayout.OnRefreshListener() {
             @Override

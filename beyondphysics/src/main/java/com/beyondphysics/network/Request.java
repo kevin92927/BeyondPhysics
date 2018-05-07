@@ -80,7 +80,7 @@ public abstract class Request<T> implements Serializable {
      */
     private boolean cancelRequest = false;
     /**
-     * 如果为true,表示取消的请求也接受回调,建议设置为false,否则Activity销毁时安卓系统会接受post的请求,导致在调用onDestroy方法后需执行完post的请求才会释放Activity占用内存
+     * 如果为true,表示取消的请求也接受取消提示的回调
      */
     private boolean receiveCancel = false;
     /**
@@ -94,7 +94,7 @@ public abstract class Request<T> implements Serializable {
      */
     private final SuperKey superKey;
     /**
-     * 可以在主线程中取消请求时候调用removeResponseListener移除请求,可以防止短时间内activity的内存泄露
+     * 可在主线程中取消请求时候调用removeResponseListener移除请求,避免短时间的activity内存泄露
      */
     private OnResponseListener<T> onResponseListener;
     /**

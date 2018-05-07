@@ -76,7 +76,7 @@ public class FileTool {
     }
 
     /**
-     * 当前框架内所有线程记录日志都统一调用该方法,日志超过100M就会被删除
+     * 当前框架内所有线程记录日志都统一调用该方法
      */
     public static synchronized void showAndWriteLog(boolean showLog, String fileName, String log, Throwable throwable, int type) {
         if (log == null) {

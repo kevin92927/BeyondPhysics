@@ -249,16 +249,14 @@ public class RequestManager {
     }
 
     public void addRequest(Request<?> request) {
-        ThreadTool.throwIfNotOnMainThread();//对于请求的操作一律在主线程运行,以免发生如在执行cancelAllRequestsByWait过程中,因while循环在this锁外而导致方法执行过程中被添加了新的请求的情况
+        ThreadTool.throwIfNotOnMainThread();
         if (request != null) {
             request.setRunningStatus(Request.WAITING);
             threadSafelyLinkedHasMapRequest_Network.putRequest(request.getSuperKey(), request);
         }
     }
 
-    /**
-     * 如果设置了请求的优先级建议使用该方法
-     */
+
     public void addRequestWithSort(Request<?> request) {
         ThreadTool.throwIfNotOnMainThread();
         if (request != null) {
@@ -301,9 +299,7 @@ public class RequestManager {
         }
     }
 
-    /**
-     * 如果recyclerView滑动过程中触发图片请求次数较多的话不建议对它进行排序,数据越多排序算法占用时间越大,会导致主线程等待this锁的时间变大,从而导致卡顿
-     */
+
     public <T> void addBitmapRequestWithSort(BitmapRequest<T> bitmapRequest) {
         ThreadTool.throwIfNotOnMainThread();
         if (bitmapRequest != null) {
@@ -365,12 +361,6 @@ public class RequestManager {
     }
 
 
-    /**
-     * 和cancelRequestWithSuperKeyByWait的区别就是会在最后执行cancelRequest,以弥补因没有移除mainResponseHandler里面已经post未执行但是实际已被取消的主线程消息队列
-     * 如果开启了ResponseHandlerWithMessageRecord,ResponseHandlerWithMessageRecord.removeResponseMessageBySuperKey(superKey, removeListener)方法可以完全替代
-     * request.cancelRequest();
-     * Request.removeListener(request, removeListener);的作用,并且可以及时移除已经不需要主线程执行的消息
-     */
     public void cancelRequestWithRequestByWait(Request<?> request, boolean removeListener) {
         ThreadTool.throwIfNotOnMainThread();
         if (request != null) {
@@ -385,9 +375,7 @@ public class RequestManager {
         }
     }
 
-    /**
-     * 复用的view内的操作,比如NetworkImageView,建议使用该方法,因为取消单个请求不会使用mainResponseHandler.removeResponseMessagesByTag(tag)移除mainResponseHandler里面未执行的信息,这时候这个post给主线程的请求可能会在主线程当前方法执行完成后执行,加上cancelRequest后可以保证一定不执行成功的回调
-     */
+
     public void cancelRequestWithRequest(Request<?> request, boolean removeListener) {
         ThreadTool.throwIfNotOnMainThread();
         if (request != null) {
@@ -445,11 +433,7 @@ public class RequestManager {
     }
 
 
-    /**
-     * 如果请求不在运行队列将立即移除包含tag的所有Request并执行回调,如果请求已在运行队列中,将设置所有Request内的cancelRequest参数为true,取消正在执行的网络请求并以阻塞方式等待,该方法执行完毕将立即释放对Request的引用
-     * 在Activity.onDestroy()内调用,将在Activity销毁前释放框架内所有对请求的引用
-     * cancelRequestWithTagByWait方法内的cancelRequestWithTagByWait和removeResponseMessagesByTag方法的组合保证了在onDestroy之前完全释放对activity的引用,不会存在任何内存泄露
-     */
+
     public void cancelRequestWithTagByWait(String tag, boolean removeListener) {
         ThreadTool.throwIfNotOnMainThread();
         RequestStatusItem requestStatusItem = threadSafelyArrayListRequestStatusItem.addRequestStatusItem(RequestStatusItem.STATUS_CANCELING, RequestStatusItem.KIND_ALL_REQUEST, tag);
@@ -460,10 +444,7 @@ public class RequestManager {
         mainResponseHandler.removeResponseMessageByTag(tag, removeListener);
     }
 
-    /**
-     * 如果请求不在运行队列将立即移除包含tag的所有Request并执行回调,如果请求已在运行队列中,将设置所有Request内的cancelRequest参数为true,
-     * 如果removeListener为true会把所有未执行sendResponseMessage的Request的Listener都移除了,再加上removeResponseMessageByTag方法移除那些已经发送的但不需要接收的,非阻塞方式也可以保证不泄露activity的内存
-     */
+
     public void cancelRequestWithTag(String tag, boolean removeListener) {
         ThreadTool.throwIfNotOnMainThread();
         threadSafelyLinkedHasMapBitmapRequest_DiskCache.cancelRequestWithTag(tag, removeListener);

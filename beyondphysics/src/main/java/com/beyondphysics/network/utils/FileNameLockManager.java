@@ -67,7 +67,7 @@ public class FileNameLockManager {
                 e.printStackTrace();
             }
             count = count + 10;
-            if (count >= 5000) {//5秒没拿到说明获取锁超时,写入日志
+            if (count >= 5000) {
                 FileTool.needShowAndWriteLogToSdcard(RequestManager.openDebug, RequestManager.logFileName, "FileNameLockManager_getFileNameLock:获取锁超时", null, 1);
                 count = 0;
             }
