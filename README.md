@@ -1,4 +1,7 @@
 # BeyondPhysicsApplication
+框架demo下载地址: http://47.97.113.47:4126/apks/beyondPhysics.apk
+
+博客地址:https://blog.csdn.net/xihuan22d/article/details/80220900
 
 相比其他开源框架的优点:
 
@@ -18,12 +21,6 @@
 
 8.完整的demo，利用demo便可以非常方便的理解使用该框架，demo部分本身的结构便是一种非常可靠高效的开发模型，可应用于实际开发，也花了大量的时间和精力验证这个框架......
 
-
-博客地址:https://blog.csdn.net/xihuan22d/article/details/80220900
-
-
-框架demo下载地址:
-http://47.97.113.47:4126/apks/beyondPhysics.apk
 
 
 androidStudio Gradle导入:
